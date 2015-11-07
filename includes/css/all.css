@@ -49,8 +49,8 @@
 	margin-bottom: 30px;
 }
 .products-table img{
-	width: 140px;
-	height: 360px;
+	width: 160px;
+	height: 160px;
 }
 .pic-info-container{
 	clear: left;
@@ -59,6 +59,9 @@
 }
 .pic-info-container .price{
 	font-weight: bold;
+}
+.pic-info-container .category{
+	color: gray;
 }
 .category-container{
 	padding-top: 7px;

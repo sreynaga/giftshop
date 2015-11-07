@@ -10,9 +10,9 @@
 	</div>
 	
 	<div class="col-md-5 text-center category-container">
-		<a href="#">Acústica</a>
-		<a href="#">Electroacústica</a>
-		<a href="#">Electrica</a>
+		<?php foreach ( $arrCategories as $numKey => $oCategory ) { ?>
+			<a href="#"><?php echo $oCategory->name; ?></a>
+		<?php } ?>
 	</div>
 
 	<div class="col-md-3 text-right per-page-container">
@@ -30,79 +30,26 @@
 </div>
 
 <div class="row products-row products-table">
-	<div class="col-md-3 text-center pic-row">
-		<div class="col-md-12 pic-container">
-			<a href="#">
-				<img src="<?php echo base_url('includes/images/products/guitarra1.png'); ?>" alt="guitarra acustica yahama c40" />
-			</a>
-		</div>
-		<div class="pic-info-container">
-			<div class="col-md-12">
-				<span>Guitarra 1</span>
+
+	<?php foreach ( $arrProducts as $numKey => $oProduct ) { ?>
+		<div class="col-md-3 text-center pic-row">
+			<div class="col-md-12 pic-container">
+				<a href="#">
+					<img src="<?php echo base_url('includes/images') . '/' . $oProduct->image; ?>" alt="<?php echo $oProduct->product_name; ?>">
+				</a>
 			</div>
-			<div class="col-mod-12">
-				<span class="price">$1,890.00</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 text-center pic-row">
-		<div class="pic-container">
-			<a href="#">
-				<img src="<?php echo base_url('includes/images/products/guitarra2.jpg'); ?>" alt="guitarra electroacustica fender cd60" />
-			</a>
-		</div>
-		<div class="pic-info-container">
-			<div class="col-md-12">
-				<span>Guitarra 2</span>
-			</div>
-			<div class="col-mod-12">
-				<span class="price">$4,390.00</span>
+			<div class="pic-info-container">
+				<div class="col-md-12">
+					<span><?php echo $oProduct->product_name; ?></span>
+				</div>
+				<div class="col-md-12">
+					<span class="category"><?php echo $oProduct->category_name; ?></span>
+				</div>
+				<div class="col-md-12">
+					<span class="price">$<?php echo $oProduct->price; ?></span>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-md-3 text-center pic-row">
-		<div class="pic-container">
-			<a href="#">
-				<img src="<?php echo base_url('includes/images/products/guitarra3.jpg'); ?>" alt="guitarra fender coronado II" />
-			</a>
-		</div>
-		<div class="pic-info-container">
-			<div class="col-md-12">
-				<span>Guitarra 3</span>
-			</div>
-			<div class="col-mod-12">
-				<span class="price">$8,390.00</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 text-center pic-row">
-		<div class="pic-container">
-			<a href="#">
-				<img src="<?php echo base_url('includes/images/products/guitarra4.jpg'); ?>" alt="guitarra fender telecaster cabronita" />
-			</a>
-		</div>
-		<div class="pic-info-container">
-			<div class="col-md-12">
-				<span>Guitarra 4</span>
-			</div>
-			<div class="col-mod-12">
-				<span class="price">$11,590.00</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 text-center pic-row">
-		<div class="pic-container">
-			<a href="#">
-				<img src="<?php echo base_url('includes/images/products/guitarra5.jpg'); ?>" alt="guitarra fender coronado II" />
-			</a>
-		</div>
-		<div class="pic-info-container">
-			<div class="col-md-12">
-				<span>Guitarra 5</span>
-			</div>
-			<div class="col-mod-12">
-				<span class="price">$8,390.00</span>
-			</div>
-		</div>
-	</div>
+	<?php } ?>
+
 </div>
