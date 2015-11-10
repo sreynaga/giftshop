@@ -10,12 +10,16 @@ class Products_model extends CI_Model {
 	/*
 	 * Method to get the all products
 	 */
-	public function getProducts() {
+	public function getProducts( $numCategory = 0 ) {
 		$this->db->select('p.id AS product_id, p.name AS product_name, p.description, p.price, p.id_category, p.image');
 		$this->db->select('c.id AS category_id, c.name AS category_name');
 
 		$this->db->from('products AS p');
 		$this->db->join('categories AS c', 'p.id_category = c.id', 'LEFT');
+
+		if ( $numCategory > 0 ) {
+			$this->db->where('p.id_category', $numCategory);
+		}
 
 		$oQuery = $this->db->get();
 

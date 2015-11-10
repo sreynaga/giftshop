@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products extends CI_Controller {
 
+	const TOTAL_PRODUCTS_PER_PAGE = 5;
+
 	public function __construct() {
 		parent::__construct();
 
@@ -12,13 +14,17 @@ class Products extends CI_Controller {
 		$this->load->library('pagination');
 	}
 
-	public function index() {
-		$arrProducts   = $this->products_model->getProducts();
+	public function index( $numCategory = 0 ) {
+		var_dump($numCategory);
+		exit;
+		$arrProducts   = $this->products_model->getProducts($numCategory);
 		$arrCategories = $this->categories_model->getAllActiveCategories();
 
-		$config['base_url'] = base_url();
-		$config['total_rows'] = 22;
-		$config['per_page'] = 20; 
+		var_dump(count($arrProducts));
+
+		$config['base_url']   = base_url();
+		$config['total_rows'] = count($arrProducts);
+		$config['per_page']   = self::TOTAL_PRODUCTS_PER_PAGE;
 
 		$this->pagination->initialize($config); 
 
