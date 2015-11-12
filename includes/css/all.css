@@ -75,3 +75,6 @@
 .category-container a:hover{
 	color: gray;
 }
+.category-container a.active{
+	color: gray;
+}

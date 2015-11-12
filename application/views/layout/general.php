@@ -54,5 +54,8 @@
 
 		<!-- Bootstrap -->
 		<script src="<?php echo base_url('includes/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+
+		<!-- Functions -->
+		<script src="<?php echo base_url('includes/js/functions.js'); ?>" type="text/javascript"></script>
 	</body>
 </html>

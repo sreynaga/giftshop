@@ -1,6 +1,6 @@
 <div class="row products-row">
 	
-	<div class="col-md-4 text-center search-container">
+	<div class="col-md-3 text-center search-container">
 		<div class="input-group">
 			<input type="text" name="search" placeholder="Search product" class="form-control" />
 			<span class="input-group-btn">
@@ -9,20 +9,23 @@
 		</div>
 	</div>
 	
-	<div class="col-md-5 text-center category-container">
+	<div class="col-md-6 text-right category-container">
+		<a href="<?php echo base_url('products/all'); ?>" <?php echo ( $numCategory == 0 ) ? 'class="active"' : ''; ?>>All</a>
 		<?php foreach ( $arrCategories as $numKey => $oCategory ) { ?>
-			<a href="#"><?php echo $oCategory->name; ?></a>
+			<a href="<?php echo base_url('products') . '/' . $oCategory->id; ?>" <?php echo ( $numCategory == $oCategory->id ) ? 'class="active"' : ''; ?>><?php echo $oCategory->name; ?></a>
 		<?php } ?>
 	</div>
 
 	<div class="col-md-3 text-right per-page-container">
 		<label for="products_per_page" class="col-md-8 text-right">Show:</label>
 		<div class="col-md-4">
-			<select name="products_per_page" class="form-control">
-				<option value="1">5</option>
-				<option value="2">10</option>
-				<option value="3">15</option>
-				<option value="4">20</option>
+			<input type="hidden" id="base-url" value="<?php echo base_url('products'); ?>" />
+			<input type="hidden" id="category" value="<?php echo $numCategory; ?>" />
+			<select name="products_per_page" class="form-control" id="select-per-page">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
 			</select>
 		</div>
 	</div>
@@ -53,3 +56,4 @@
 	<?php } ?>
 
 </div>
+<?php echo $strPagination; ?>

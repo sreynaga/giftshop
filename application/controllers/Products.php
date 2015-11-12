@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products extends CI_Controller {
 
-	const TOTAL_PRODUCTS_PER_PAGE = 5;
-
 	public function __construct() {
 		parent::__construct();
 
@@ -14,28 +12,29 @@ class Products extends CI_Controller {
 		$this->load->library('pagination');
 	}
 
-	public function index( $numCategory = 0 ) {
-		var_dump($numCategory);
-		exit;
-		$arrProducts   = $this->products_model->getProducts($numCategory);
+	public function index( $numCategory = 0, $numItemsPerPage = Products_model::TOTAL_PRODUCTS_PER_PAGE, $numPage = 0 ) {
+		$arrProducts      = $this->products_model->getProducts($numCategory, $numItemsPerPage, $numPage);
+		$numTotalProducts = $this->products_model->getTotalProducts($numCategory);
+		
 		$arrCategories = $this->categories_model->getAllActiveCategories();
 
-		var_dump(count($arrProducts));
+		$strUrl = 'products/' . $numCategory . '/' . $numItemsPerPage;
 
-		$config['base_url']   = base_url();
-		$config['total_rows'] = count($arrProducts);
-		$config['per_page']   = self::TOTAL_PRODUCTS_PER_PAGE;
+		$config['base_url']   = base_url($strUrl);
+		$config['total_rows'] = $numTotalProducts;
+		$config['per_page']   = $numItemsPerPage;
 
 		$this->pagination->initialize($config); 
 
-		echo $this->pagination->create_links();
-		exit;
+		$strPagination = $this->pagination->create_links();
 
 		//Set variables
 		$arrData['strTitle']      = 'Products';
 		$arrData['strTemplate']   = 'products/index';
 		$arrData['arrProducts']   = $arrProducts;
 		$arrData['arrCategories'] = $arrCategories;
+		$arrData['numCategory']   = $numCategory;
+		$arrData['strPagination'] = $strPagination;
 
 		//Load the view
 		$this->load->view('layout/general', $arrData);
