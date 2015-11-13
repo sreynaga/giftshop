@@ -33,9 +33,19 @@
 				<div class="col-md-8 text-right cart-and-login-container">
 					<a href="<?php echo base_url('cart'); ?>" class="my-cart-link">
 						<li class="glyphicon glyphicon-shopping-cart"></li>
-						My Cart <span class="cart-counter">(0)</span>
+						My Cart <span class="cart-counter">(<?php echo $numTotalCarProducts; ?>)</span>
 					</a>
-					<a href="<?php echo base_url('login'); ?>" class="login-link">Login</a>
+					<?php if ( $this->session->userdata('loggued') ) { ?>
+						<span class="logut-link">
+							<?php echo $this->session->userdata('username'); ?>
+							<?php if ( $this->session->userdata('is_admin') ) { ?>
+								/ <a href="<?php echo base_url('admin'); ?>">Admin</a>
+							<?php } ?>
+							(<a href="<?php echo base_url('users/logout'); ?>">Logout</a>)
+						</span>
+					<?php } else { ?>
+						<a href="<?php echo base_url('users'); ?>" class="login-link">Login</a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -48,6 +58,14 @@
 			?>
 		</div>
 		<!-- End - Container -->
+
+		<!-- Start - Footer -->
+		<div class="container footer">
+			<div class="col-md-12 text-center">
+				Copyright &copy; <?php echo date('Y'); ?> - <i>Sergio Reynaga</i>
+			</div>
+		</div>
+		<!-- End - Footer -->
 
 		<!-- jQuery -->
 		<script src="<?php echo base_url('includes/js/jquery.min.js'); ?>" type="text/javascript"></script>

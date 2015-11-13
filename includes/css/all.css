@@ -1,5 +1,10 @@
 .main-container{
-	margin-top: 40px;
+	margin-top: 20px;
+}
+h1{
+	color: orange;
+	text-shadow: 2px 2px #e8e8e8;
+	font-weight: bold;
 }
 
 /** Top Nav **/
@@ -13,6 +18,12 @@
 }
 .top-nav-container .cart-and-login-container{
 	padding-top: 30px;
+}
+.top-nav-container .logut-link{
+	padding-left: 20px;
+}
+.top-nav-container .logut-link a:hover{
+	color: orange;
 }
 .top-nav-container .cart-and-login-container a{
 	color: #333333;
@@ -42,8 +53,10 @@
 .products-table{
 	margin-top: 40px;
 }
-.products-table .pic-container{
+.products-table .product-row{
 	border: 1px solid #e8e8e8;
+	padding: 10px;
+	min-height: 340px;
 }
 .products-table .pic-row{
 	margin-bottom: 30px;
@@ -63,6 +76,10 @@
 .pic-info-container .category{
 	color: gray;
 }
+.pic-info-container .product-description{
+	font-size: 12px;
+	font-style: italic;
+}
 .category-container{
 	padding-top: 7px;
 }
@@ -73,8 +90,40 @@
 	margin-right: 30px;
 }
 .category-container a:hover{
-	color: gray;
+	color: orange;
 }
 .category-container a.active{
-	color: gray;
+	color: orange;
+}
+.no-data-row{
+	border-top: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 20px 0;
+}
+.add-to-cart{
+	margin-top: 20px;
+}
+.show-per-page-label{
+	padding-top: 7px;
+}
+.billing-info-container{
+	margin-top: 20px;
+}
+.row-view-product{
+	margin-top: 30px;
+}
+.row-view-product .row{
+	margin-bottom: 20px;
+}
+.footer{
+	border-top: 1px solid #e8e8e8;
+	padding: 25px;
+	margin-top: 20px;
+}
+label.error{
+	color: red;
+	margin-bottom: 20px;
+}
+.container-products-table{
+	margin-top: 20px;
 }
